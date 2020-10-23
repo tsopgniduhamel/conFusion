@@ -1,67 +1,40 @@
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
-    fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-    <div fxFlex="40">
-        <div fxFlex *ngIf="dish">
-            <mat-card>
-                dish.
-                <mat-card-header>
-                    <mat-card-title>
-                        <h3>{{dish.name | uppercase}}</h3>
-                    </mat-card-title>
-                </mat-card-header>
+<div fxFlex="40">
+      <mat-card fxFlex *ngIf="dish">
+        <mat-card-header>
+          <mat-card-title>
+            <h3>{{dish.name | uppercase}}</h3>
+          </mat-card-title>
+        </mat-card-header>
 
-                <img mat-card-image src={{dish.image}} alt="{{dish.name}}">
+        <img mat-card-image src={{dish.image}} alt="{{dish.name}}">
 
-                <mat-card-content>
-                    <p>
-                        {{dish.description}}
-                    </p>
-                </mat-card-content>
+        <mat-card-content>
+          <p>
+            {{dish.description}}
+          </p>
+        </mat-card-content>
 
-                <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-    </div>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
 
-    <div fxFlex="40">
+  <div fxFlex="40">
+      <mat-list *ngIf="dish">
         <h3>Comments</h3>
-        <!-- I did so many mat-list-item because the execice asked us to use the 
-        *ngIf, we can avoid that by using the *ngFor directive -->
-        <mat-list>
-            <mat-list-item *ngIf="dish">
-                {{dish.comments[0].comment}} <br>
-                {{dish.comments[0].starts }} stars <br>
-                -- {{dish.comments[0].author}} {{dish.comments[0].date  | date}} <br><br>
-            </mat-list-item>
-            <br><br>
-            <mat-list-item *ngIf="dish">
-                {{dish.comments[1].comment}} <br>
-                {{dish.comments[1].starts }} stars <br>
-                -- {{dish.comments[1].author}} {{dish.comments[1].date  | date}} <br><br>
-            </mat-list-item>
-            <br><br>
-            <mat-list-item *ngIf="dish">
-                {{dish.comments[2].comment}} <br>
-                {{dish.comments[2].starts }} stars <br>
-                -- {{dish.comments[2].author}} {{dish.comments[2].date  | date}} <br><br>
-            </mat-list-item>
-            <br><br>
-            <mat-list-item *ngIf="dish">
-                {{dish.comments[3].comment}} <br>
-                {{dish.comments[3].starts }} stars <br>
-                -- {{dish.comments[3].author}} {{dish.comments[3].date  | date}} <br><br>
-            </mat-list-item>
-            <br><br>
-            <mat-list-item *ngIf="dish">
-                {{dish.comments[4].comment}} <br>
-                {{dish.comments[4].starts }} stars <br>
-                -- {{dish.comments[4].author}} {{dish.comments[4].date  | date}} <br><br>
-            </mat-list-item>
+        <h2>Comments</h2>
+          <mat-list-item *ngFor="let comment of dish.comments">
+            <p matLine>{{comment.comment}}</p>
+            <p matLine><span>{{comment.rating}} Stars</span></p>
+            <P matLine><span>-- {{comment.author}} {{comment.date | date}}</span></P>
+          </mat-list-item>
         </mat-list>
-    </div>
+
+  </div>
 
 </div>
