@@ -8,15 +8,15 @@ import { PROMOTIONS } from '../shared/promotions';
 export class PromotionService {
   constructor() {}
 
-  getDishes(): Dish[] {
-    return DISHES;
+  getPromotions(): Promotion[] {
+    return PROMOTIONS;
   }
 
-  getDish(id: string): Dish {
-    return DISHES.filter((dish) => dish.id === id)[0];
+  getPromotion(id: string): Promotion {
+    return PROMOTIONS.filter((promo) => promo.id === id)[0];
   }
 
-  getFeaturedDish(): Dish {
-    return DISHES.filter((dish) => dish.featured)[0];
+  getFeaturedPromotion(): Promotion {
+    return PROMOTIONS.filter((promo) => promo.featured)[0];
   }
 }
