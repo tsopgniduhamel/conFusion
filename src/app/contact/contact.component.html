@@ -42,7 +42,7 @@
     <p>
       {{ feedbackForm.value | json }} {{ feedbackForm.status | json}}
     </p>
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" #fform="ngForm">
       <p>
         <mat-form-field class="half-width">
           <input
@@ -52,6 +52,11 @@
             type="text"
             required
             >
+            <mat-error
+              *ngIf="feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched"
+              >
+                Fistname is required
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
             <input
@@ -61,6 +66,11 @@
             type="text"
             required
             >
+            <mat-error
+              *ngIf="feedbackForm.get('lastname').hasError('required') && feedbackForm.get('lastname').touched"
+              >
+                Lastname is required
+            </mat-error>
         </mat-form-field>
       </p>
 
@@ -73,6 +83,11 @@
             type="tel"
             required
             >
+            <mat-error
+              *ngIf="feedbackForm.get('telnum').hasError('required') && feedbackForm.get('telnum').touched"
+              >
+                Telephone number is required
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
           <input
@@ -82,6 +97,11 @@
           type="email"
           required
           >
+          <mat-error
+              *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched"
+              >
+                Email is required
+            </mat-error>
       </mat-form-field>
       </p>
 
@@ -109,7 +129,13 @@
         </mat-form-field>
       </p>
 
-      <button type="submit" mat-button class="background-primary text-floral-white">Send Feedback</button>
+      <button
+        type="submit"
+        mat-button
+        class="background-primary text-floral-white"
+        [disabled]="feedbackForm.invalid">
+          Send Feedback
+      </button>
     </form>
   </div>
 </div>
