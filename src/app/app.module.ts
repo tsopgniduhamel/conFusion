@@ -25,6 +25,9 @@ import { PromotionService } from './services/promotion.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LeaderService } from './services/leader.service';
+import { LoginComponent } from './login/login.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { LeaderService } from './services/leader.service';
     AboutComponent,
     ContactComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import { LeaderService } from './services/leader.service';
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
+    MatDialogModule,
   ],
+  entryComponents: [LoginComponent],
   providers: [DishService, PromotionService, LeaderService],
   bootstrap: [AppComponent],
 })
