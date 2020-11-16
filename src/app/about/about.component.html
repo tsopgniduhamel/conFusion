@@ -58,30 +58,36 @@
         </h3>
         <footer>
           -- Yogi Berra,
-          <cite>The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books,
-            2014</cite>
+          <cite
+            >The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books,
+            2014</cite
+          >
         </footer>
       </blockquote>
     </mat-card>
   </div>
 
-  <div fxFlex>
+  <div fxFlex *ngIf="leaders">
     <h2>Corporate Leadership</h2>
-    <br>
+    <br />
     <mat-card *ngFor="let leader of leaders">
       <mat-card-header>
         <mat-card-title>
-          <h3>{{leader.name | uppercase}}</h3>
+          <h3>{{ leader.name | uppercase }}</h3>
         </mat-card-title>
       </mat-card-header>
 
-      <img mat-card-image src={{leader.image}} alt="{{leader.name}}">
+      <img mat-card-image src="{{ leader.image }}" alt="{{ leader.name }}" />
 
       <mat-card-content>
         <p>
-          {{leader.description}}
+          {{ leader.description }}
         </p>
       </mat-card-content>
     </mat-card>
+  </div>
+  <div fxFlex [hidden]="leaders">
+    <mat-spinner></mat-spinner>
+    <h4>Loading ... Please wait</h4>
   </div>
 </div>
