@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Leader } from '../shared/leader';
 import { LEADERS } from '../shared/leaders';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Injectable({
@@ -9,8 +9,8 @@ import { delay } from 'rxjs/operators';
 })
 export class LeaderService {
   constructor() {}
-  getLeaders(): Promise<Leader[]> {
-    return of(LEADERS).pipe(delay(3000)).toPromise();
+  getLeaders(): Observable<Leader[]> {
+    return of(LEADERS).pipe(delay(3000));
 
     // return new Promise((resolve) => {
     //   setTimeout(() => {
@@ -19,10 +19,10 @@ export class LeaderService {
     // });
   }
 
-  getDish(id: string): Promise<Leader> {
-    return of(LEADERS.filter((leader) => leader.id === id)[0])
-      .pipe(delay(3000))
-      .toPromise();
+  getDish(id: string): Observable<Leader> {
+    return of(LEADERS.filter((leader) => leader.id === id)[0]).pipe(
+      delay(3000)
+    );
 
     // return new Promise((resolve) => {
     //   setTimeout(() => {
@@ -31,10 +31,10 @@ export class LeaderService {
     // });
   }
 
-  getFeaturedLeader(): Promise<Leader> {
-    return of(LEADERS.filter((leader) => leader.featured == true)[0])
-      .pipe(delay(3000))
-      .toPromise();
+  getFeaturedLeader(): Observable<Leader> {
+    return of(LEADERS.filter((leader) => leader.featured == true)[0]).pipe(
+      delay(3000)
+    );
 
     // return new Promise((resolve) => {
     //   setTimeout(() => {
