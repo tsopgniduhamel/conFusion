@@ -38,4 +38,8 @@ export class DishService {
     //   }, 3000);
     // });
   }
+
+  getDishIds(): Observable<string[] | any> {
+    return of(DISHES.map((dish) => dish.id));
+  }
 }
