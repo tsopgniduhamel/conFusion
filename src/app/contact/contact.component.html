@@ -52,10 +52,8 @@
             type="text"
             required
             >
-            <mat-error
-              *ngIf="feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched"
-              >
-                Fistname is required
+            <mat-error *ngIf="formErrors.firstname">
+                {{formErrors.firstname}}
             </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
@@ -66,10 +64,8 @@
             type="text"
             required
             >
-            <mat-error
-              *ngIf="feedbackForm.get('lastname').hasError('required') && feedbackForm.get('lastname').touched"
-              >
-                Lastname is required
+            <mat-error *ngIf="formErrors.lastname">
+                {{formErrors.lastname}}
             </mat-error>
         </mat-form-field>
       </p>
@@ -81,12 +77,11 @@
             formControlName="telnum"
             placeholder="Your telephone number"
             type="tel"
+            pattern="[0-9]*"
             required
             >
-            <mat-error
-              *ngIf="feedbackForm.get('telnum').hasError('required') && feedbackForm.get('telnum').touched"
-              >
-                Telephone number is required
+            <mat-error *ngIf="formErrors.telnum">
+              {{formErrors.telnum}}
             </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
@@ -95,13 +90,12 @@
           formControlName="email"
           placeholder="Your Email"
           type="email"
+          email
           required
           >
-          <mat-error
-              *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched"
-              >
-                Email is required
-            </mat-error>
+          <mat-error *ngIf="formErrors.email">
+            {{formErrors.email}}
+          </mat-error>
       </mat-form-field>
       </p>
 
